@@ -1,4 +1,7 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 class Filme extends Midia {
 
@@ -22,6 +25,7 @@ class Filme extends Midia {
         this.elenco = elenco;
         this.diretor = diretor;
         this.produtor = produtor;
+
     }
 
     //Get and Setters
@@ -67,16 +71,36 @@ class Filme extends Midia {
         this.produtor = produtor;
     }
 
+
+
     // metodo para mostrar o filme//
     public String print_filme() {
-        return "Filme: \n" +
-                "Titulo:" + getTitulo() + "\n" +
+        return "Filme:" + getTitulo() + "\n" +
                 "Genero:" + getGenero()+"\n"+
                 "Ano:"+ getAno()+"\n"+
                 "Duração:" + getTipo()+"\n"+
-                "Elenco:"+ getElenco()+"\n"+
+                "Elenco:"+ juntando_elenco()+"\n"+
                 "Diretor:"+getDiretor()+"\n"+
                 "Produtor:"+getProdutor();
 
     }
+
+    // metodo para juntar o elenco//
+    public String juntando_elenco() {
+        StringBuffer sb = new StringBuffer();
+        for (Ator ator : getElenco()) {
+            sb.append( "\n"+ator.getNomeDoArtista());
+
+        }
+        return sb.toString();
+    }
+
+
+
+
+
+
+
+
 }
+
