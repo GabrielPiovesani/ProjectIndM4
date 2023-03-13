@@ -1,6 +1,6 @@
 class Musica extends Midia {
 
-    //atributos da classe musica//
+    // ==========================ATRIBUTOS DE MUSICA=================================== //
     private double duracao;
     private String artista;
     private int notas;

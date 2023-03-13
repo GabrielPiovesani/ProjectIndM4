@@ -1,20 +1,23 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BibliotecaDeMidias {
-// contendo as midias usuario e playlist e get set e o metodo tocar playlist. //
+// ==========================ATRIBUTOS DE BIBLIOTECA DE MIDIAS=================================== //
    private Midia midia;
 
     private Playlist playlist;
 
     private String usuario;
 
-
+//==========================CONSTRUCTOR==============================================================//
     public BibliotecaDeMidias(Midia midia, Playlist playlist, String usuario) {
         this.midia = midia;
         this.playlist = playlist;
         this.usuario = usuario;
     }
-
+//===========================SET AND GET ================================================================//
     public Midia getMidia() {
         return midia;
     }
@@ -39,34 +42,31 @@ public class BibliotecaDeMidias {
         this.usuario = usuario;
     }
 
-
-//    metodo tocar playlist
+    //  ==================METODO TOCAR_PLAYLIST======================================================///
 public String tocar_playlist(){
 
     Scanner insert = new Scanner(System.in);
-    System.out.println("Deseja iniciar a playlist ?");
+    System.out.println("Bem Vindo "+getUsuario() +"\n"+
+            "Deseja iniciar a sua playlist?" );
     String resposta = insert.nextLine();
 
     if (resposta.equalsIgnoreCase("sim")){
-        System.out.println("aplicação iniciada");
 
-
-
-
-
-    }else if(resposta.equalsIgnoreCase("nao")){
-        System.out.println("ok encerrando a aplicação");
-        tocar_playlist();
+        playlist.tocar_midias();
 
     }
-    else{
+     else if (resposta.equalsIgnoreCase("nao")) {
+        System.out.println("ok encerrando a aplicação");
+
+
+    } else{
 
         System.out.println("nao entendi seu comando");
         tocar_playlist();
     }
 
 
-    return playlist.mostrar_midia();
+    return getUsuario();
 }}
 
 

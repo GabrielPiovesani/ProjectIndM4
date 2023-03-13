@@ -4,7 +4,7 @@ import java.util.Date;
 class Ator extends Artista{
 //formacao teatro, cinema, outros..
 
-
+    // ==========================ATRIBUTOS DE ATOR================================== //
    private String formacao;
 
     public Ator(String nomeDoArtista, LocalDate dataDeNascimento, String premiacoes, String genero, String formacao) {

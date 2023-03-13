@@ -1,13 +1,13 @@
 public class Midia {
+    // ==========================ATRIBUTOS DE MIDIAS=================================== //
+    private String titulo, genero;
+    private int ano;
+
     public Midia(String titulo, String genero, int ano) {
         this.titulo = titulo;
         this.genero = genero;
         this.ano = ano;
     }
-
-    private String titulo, genero;
-    private int ano;
-
     public String getTitulo() {
         return titulo;
     }

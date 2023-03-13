@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Artista {
-    //nome dtnascimento premiacoes, genero(masc, fem,ind) e seus get and set ...
+    // ==========================ATRIBUTOS DE ARTISTA=================================== //
 
     private String nomeDoArtista;
     private LocalDate dataDeNascimento;

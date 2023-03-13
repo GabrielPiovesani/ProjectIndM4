@@ -1,8 +1,10 @@
 import java.time.LocalDate;
 import java.util.*;
+import java.util.Random;
+
 
 public class Playlist {
-// midias, ordem de execuçao, midia atual, get e set e o metodo proxima midia e midia anterior
+// =================================ATRIBUTOS DE PLAYLIST======================================================== //
     private ArrayList<Midia> midias;
     private String ordemExecucao; //ordem de execucao
     private Midia midiaAtual; // midia atual tocando
@@ -63,12 +65,23 @@ public class Playlist {
     }
 
 
-    public String mostrar_midia(){
+    public String tocar_midias(){
 
         Scanner insert = new Scanner(System.in);
-        System.out.println("esta tocando:"+ midiaAtual.getTitulo()+"\n"+
-                "(NEXT) para avançar ||(PREV) para voltar ||(STOP) para encerrar || (PAUSE) para pausar ||(TROCAR) para trocar a playlist");
+        System.out.println(
+                "                                                 MIDIA TOCANDO                     "+"\n"+
+                "                                                 Nome: "+midiaAtual.getTitulo()+"\n"+
+                "                                                 Genero: "+midiaAtual.getGenero()+"\n"+
+                "                                                 Ano de Lançamento: "+midiaAtual.getAno()+"\n"+
+                "----------------------------------------------------------------------------------------------------------------------------------------------"
+                +"\n"+
+                "|| (NEXT) para proxima midia ||" + " (PREV) para midia anterior ||" + " (STOP) para encerrar ||" + " (PAUSE) para pausar || (RANDON) para passar aleatorio ||"+"\n"+
+                "----------------------------------------------------------------------------------------------------------------------------------------------");
         String resposta = insert.nextLine();
+
+
+
+
 
 
         // metodo next ....
@@ -84,7 +97,7 @@ public class Playlist {
                 setNumeroMidiaAtual(numeroMidiaAtual + 1);
             }
 
-            mostrar_midia();
+            tocar_midias();
 
             // metodo prev ....
         }else if(resposta.equalsIgnoreCase("prev")){
@@ -92,110 +105,59 @@ public class Playlist {
             if(numeroMidiaAtual == 0 ) {
                 setMidiaAtual(getMidias().get(midias.size()-1));
                 setNumeroMidiaAtual(getMidias().size()-1);
-                System.out.println(getMidias().size());
+
             } else {
                 setMidiaAtual(getMidias().get(numeroMidiaAtual - 1));
                 setNumeroMidiaAtual(numeroMidiaAtual - 1);
             }
 
-            mostrar_midia();
+            tocar_midias();
 
 
         }
         else if(resposta.equalsIgnoreCase("Pause")) {
-            System.out.println("sua musica foi pausada");
-            reiniciar();
-        }
-        else if(resposta.equalsIgnoreCase("trocar")) {
+            System.out.println("sua midia foi pausada:"+"\n"+"Nome:"+midiaAtual.getTitulo()+"\n"+
+                   "reinicie o sistema" );
 
-            System.out.println("voce gostaria de selecionar filme ou musica?");
-            if (resposta.equalsIgnoreCase("musica")){
-                System.out.println("vou tocar musica");
-                mostrar_midia();
-            }
-            else {
-                System.out.println("vou tocar filme");
-            }
+
+
+
+
+
+
+        }else if(resposta.equalsIgnoreCase("randon")) {
+
+            Random random = new Random();
+
+
+         if (resposta.equalsIgnoreCase("randon")){
+             setMidiaAtual(getMidias().get(random.nextInt(midias.size())));
+             setNumeroMidiaAtual(numeroMidiaAtual-1);
+
+
+             tocar_midias();
+
+         }
+
+        }
+
+        else if(resposta.equalsIgnoreCase("Stop")) {
+            System.out.println("aplicação fechada muito obrigado ");
+
         }
         else{
 
             System.out.println("nao entendi seu comando");
-            mostrar_midia();
+           tocar_midias();
         }
 
 
-        return "Obrigado";
+        return "para iniciar novamente rode o codigo!";
 
 
 
 
 //
-    }
-
-
-
-
-
-    private void reiniciar(){
-
-        var atoresMockados = new ArrayList<Ator>(Arrays.asList(
-                new Ator("Daniel Radcliffe", LocalDate.parse("1996-04-04"), "Oscar 2016", "Masculino", "Cinema"),
-                new Ator("Rupert Grint", LocalDate.parse("2000-12-21"), "Oscar 2022", "masculino", "Teatro"),
-                new Ator("Emma Watson", LocalDate.parse("1996-04-21"), "Oscar 2016", "Feminino", "Cinema")
-
-        ));
-        var filmeMockado = new Filme
-                (       "Harry Potter 2",
-                        "Fantasia",
-                        2001, 96,
-                        TipoEnum.Longa,atoresMockados,
-                        "Chris Columbus",
-                        "David Heyman");
-
-
-
-
-//        System.out.println(filmeMockado.print_filme());
-
-
-        var midiasMockadas = new ArrayList<Midia>(
-                Arrays.asList(
-                        new Musica("A Lenda", "Romance", 1998, 3.07, "Sandy & Junior", 5),
-                        new Musica("Vamo Pular", "Animadas 2002", 2002, 3.07, "Sandy & Junior", 5),
-                        new Musica("Grandes Coisas", "Gospel", 1998, 3.29, "Fernandinho", 5)
-                )
-        );
-
-        var playlistMockada = new Playlist(midiasMockadas, "1", midiasMockadas.get(0), 0);
-
-
-        BibliotecaDeMidias aplicacao = new BibliotecaDeMidias(midiasMockadas.get(0),playlistMockada,"gabs");
-
-        aplicacao.tocar_playlist();
-
-    }
-
-
-//    public void proximaMidia() {
-//        if(getOrdemExecucao().equals("Alfabetica")) {
-//            System.out.println("reorganizando midias");
-//            Collections.sort(midias, new Comparator<Midia>() {
-//                @Override
-//                public int compare(Midia midia1, Midia midia2)
-//                {
-//                    return  midia1.getTitulo().compareTo(midia2.getTitulo());
-//                }
-//            });
-//        }
-//
-//        if(numeroMidiaAtual >= (midias.size() - 1)) {
-//            setMidiaAtual(getMidias().get(0));
-//            setNumeroMidiaAtual(0);
-//
-//        } else {
-//            setMidiaAtual(getMidias().get(numeroMidiaAtual + 1));
-//            setNumeroMidiaAtual(numeroMidiaAtual + 1);
-//        }
-    }
+    }}
 
 

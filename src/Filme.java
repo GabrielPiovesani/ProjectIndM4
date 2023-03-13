@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 class Filme extends Midia {
-
+    // ==========================ATRIBUTOS DE FILME=================================== //
     private double duracao;
     private TipoEnum tipo;
 
@@ -94,11 +94,6 @@ class Filme extends Midia {
         }
         return sb.toString();
     }
-
-
-
-
-
 
 
 
