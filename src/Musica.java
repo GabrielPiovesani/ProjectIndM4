@@ -1,11 +1,17 @@
-public class Musica extends Midia {
+class Musica extends Midia {
 
+    // ==========================ATRIBUTOS DE MUSICA=================================== //
     private double duracao;
     private String artista;
     private int notas;
-    public Musica() {
+    //constructor da classe musica
+    public Musica(String titulo, String genero, int ano, double duracao, String artista, int notas) {
+        super(titulo, genero, ano);
+        this.duracao = duracao;
+        this.artista = artista;
+        this.notas = notas;
     }
-
+    //get and set
     public double getDuracao() {
         return duracao;
     }
@@ -29,7 +35,4 @@ public class Musica extends Midia {
     public void setNotas(int notas) {
         this.notas = notas;
     }
-
-
-
 }
